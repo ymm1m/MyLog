@@ -2,6 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
+//    id("dagger.hilt.android.plugin")
+//    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+//    id("com.android.application")
+//    id("org.jetbrains.kotlin.android")
+//    id("kotlin-kapt")
 }
 
 android {
@@ -36,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -56,4 +63,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Google Maps SDK for Android
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+    // Room Database
+    implementation("androidx.room:room-runtime:2.4.2")
+    implementation("androidx.room:room-ktx:2.4.2")
+    kapt("androidx.room:room-compiler:2.4.2")
+    // ViewModel & LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.40.5")
+    kapt("com.google.dagger:hilt-compiler:2.40.5")
+    // ViewPager2 for switching between map and list views
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    // Google Maps Utils for additional mapping features
+    implementation("com.google.maps.android:android-maps-utils:3.8.2")
 }
